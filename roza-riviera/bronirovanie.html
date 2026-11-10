@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Бронирование · Роза-Ривьера</title>
+<meta name="description" content="Забронируйте номер в Роза-Ривьере: выберите номер, даты и отправьте заявку. Королевский менеджер свяжется с вами в течение 24 часов.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html">Роза-<span>Ривьера</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">О нас</a></li>
+      <li><a href="nomera.html">Номера</a></li>
+      <li><a href="restorany.html">Рестораны</a></li>
+      <li><a href="izuminki.html">Изюминки</a></li>
+      <li><a href="vechera.html">Вечера</a></li>
+      <li><a href="detyam.html">Детям</a></li>
+      <li><a href="otzyvy.html">Отзывы</a></li>
+      <li><a href="bronirovanie.html" class="btn-nav">Забронировать</a></li>
+    </ul>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="book">
+      <h2>Ваше королевство ждёт</h2>
+      <p class="lead">Забронируйте своё место в «Роза-Ривьере» и узнайте, каково это — просыпаться принцессой. Заполните форму — мы подготовим персональное предложение.</p>
+      <form class="bform" onsubmit="return submitBooking(event)">
+        <div class="brow">
+          <div><label>Имя</label><input type="text" id="bkName" required placeholder="Ваше имя"></div>
+          <div><label>Электронная почта</label><input type="email" id="bkEmail" required placeholder="you@example.com"></div>
+        </div>
+        <div class="brow">
+          <div><label>Номер</label>
+            <select id="bkRoom">
+              <option>Номер «Принцесса» — 12 900 ₽/ночь</option>
+              <option>Люкс «Королева» — 19 900 ₽/ночь</option>
+              <option>Номер «Русалочка» — 14 900 ₽/ночь</option>
+              <option>Номер «Холодное сердце» — 15 900 ₽/ночь</option>
+              <option>Сюита «Барби» — 21 900 ₽/ночь</option>
+              <option>Семейный «Зал Балов» — 27 900 ₽/ночь</option>
+              <option>Пентхаус «Академия» — 49 900 ₽/ночь</option>
+              <option>Бизнес-номер — 11 900 ₽/ночь</option>
+            </select>
+          </div>
+          <div><label>Сроки пребывания</label><input type="text" id="bkDates" placeholder="например: 15–20 июня 2027"></div>
+        </div>
+        <div class="brow">
+          <div><label>Взрослых</label><input type="number" id="bkGuests" min="1" max="10" value="2"></div>
+          <div><label>Детей</label><input type="number" id="bkKids" min="0" max="6" value="0"></div>
+        </div>
+        <label>Пожелания и особые даты</label>
+        <textarea id="bkComment" placeholder="Расскажите, что для вас важно: юбилей, день рождения, предложение руки и сердца…"></textarea>
+        <button type="submit" class="btn">Отправить заявку на бронирование</button>
+      </form>
+      <div id="bookOk">
+        <div class="tick">✦</div>
+        <h3>Спасибо! Ваша заявка принята.</h3>
+        <p>Наш королевский менеджер свяжется с вами в течение 24 часов. Мы уже готовим вашу корону.</p>
+      </div>
+      <p style="text-align:center;color:#FFE8F3;font-size:.9rem;margin-top:22px">Лазурный Берег, Франция · +33 (0) 4 00 00 00 00 · hello@roza-riviera.com</p>
+    </div>
+  </div>
+</section>
+
+<div class="final-quote">
+  <div class="wrap">
+    <div class="q">«Каждая женщина заслуживает хотя бы раз в жизни проснуться принцессой. Каждая девочка — хотя бы один день пожить в сказке. Мы создали место, где это возможно каждый день.»</div>
+    <div class="who">— ОСНОВАТЕЛИ «РОЗА-РИВЬЕРЫ»</div>
+  </div>
+</div>
+
+<footer>
+  <div class="big">✦ Роза-Ривьера ✦</div>
+  <p>Розовый дворец на Лазурном Берегу · Академия принцесс × дух Барби</p>
+  <div class="row">
+    <a href="index.html">О нас</a><a href="nomera.html">Номера</a><a href="restorany.html">Рестораны</a><a href="izuminki.html">Изюминки</a><a href="vechera.html">Вечера</a><a href="detyam.html">Детям</a><a href="otzyvy.html">Отзывы</a><a href="bronirovanie.html">Бронирование</a>
+  </div>
+  <p style="color:#E3B8CC">Лазурный Берег, Франция · hello@roza-riviera.com</p>
+  <p class="x">© 2026 Роза-Ривьера · Концепция гостиницы-дворца</p>
+</footer>
+
+<script>
+function submitBooking(e){
+  e.preventDefault();
+  var ok=document.getElementById('bookOk');
+  var name=document.getElementById('bkName').value.trim();
+  var mail=document.getElementById('bkEmail').value.trim();
+  if(!name||!mail){alert('Пожалуйста, заполните имя и электронную почту.');return false;}
+  document.querySelector('.bform').style.display='none';
+  ok.style.display='block';
+  ok.scrollIntoView({behavior:'smooth',block:'center'});
+  return false;
+}
+</script>
+
+</body>
+</html>
